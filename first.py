@@ -29,7 +29,10 @@ def process(table):
     """
     table.lengths = [p.prglength for p in table.records]
     table.n = len(table.lengths)
+
+    # 计算均值和方差
     table.mu = thinkstats.mean(table.lengths)
+    table.var = thinkstats.var(table.lengths)
 
 def processTables(*tables):
     for table in tables:
@@ -50,12 +53,16 @@ def summary(data_dir):
     print('Number of first babies:', firsts.n)
     print('Number of others:', others.n)
     mu1, mu2 = firsts.mu, others.mu
-    print('Mean gestation in weeks:')
-    print('First babies', mu1)
-    print('Others', mu2)
+
+    # 计算方差
+    var1, var2 = firsts.var, others.var
+    # print('Mean gestation in weeks:')
+    print("The first babies' mean is {} and var is {}".format(mu1, var1))
+    print("The other babies' mean is {} and var is {}".format(mu2, var2))
     print('Difference in days', (mu1 - mu2) * 7.0)
     print('Difference in hours', (mu1-mu2) * 7 * 24.0)
 
 if __name__ == '__main__':
 
-    summary(data_dir='../data')
+    summary(data_dir='data')
+    print('done')
