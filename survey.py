@@ -179,3 +179,4 @@ if __name__ == '__main__':
     preg = Pregnancies()
     preg.readRecords(data_dir='data')
     print('Number of pregnancies', len(preg.records))
+

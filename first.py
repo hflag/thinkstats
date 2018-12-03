@@ -62,6 +62,17 @@ def summary(data_dir):
     print('Difference in days', (mu1 - mu2) * 7.0)
     print('Difference in hours', (mu1-mu2) * 7 * 24.0)
 
+    firsts_prglength = [r.prglength for r in firsts.records]
+    others_prglength = [r.prglength for r in others.records]
+
+    firsts_hist = {}
+    others_hist = {}
+    for x in firsts_prglength:
+        firsts_hist[x] = firsts_hist.get(x, 0) + 1
+    for y in others_prglength:
+        others_hist[y] = others_hist.get(y, 0) + 1
+    print(firsts_hist)
+
 if __name__ == '__main__':
 
     summary(data_dir='data')
