@@ -15,6 +15,13 @@ class _Wrapper:
             #     self.d = d
             self.d = Counter(d)
 
+    def render(self):
+        '''
+        产生一系列的点，用来作图
+        :return:
+        '''
+        return zip(*sorted(self.d.items()))
+
 
 class Hist(_Wrapper):
     def __init__(self, d=None):
@@ -72,9 +79,10 @@ if __name__ == '__main__':
     #         max =fre
     #         i= x
     # print('{} 出先多次: {}'.format(x, max))
-    print(h1.sorted_freqs())
-    p = Pmf([1,2,2,3])
-    print(p.prob(2))
+    vals, freqs = h1.render()
+    import matplotlib.pyplot as plt
+    plt.plot(vals, freqs)
+    plt.show()
 
 
 

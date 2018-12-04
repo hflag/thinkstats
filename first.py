@@ -1,6 +1,6 @@
 import survey
 import thinkstats
-
+import Pmf
 
 def partitionRecords(table):
     """
